@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular 22: A legfontosabb újdonságok | Angular PRSTART</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <a href="../index.html" class="logo"><span>A</span>ngular PRSTART</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero" style="padding: 60px 0;">
+    <div class="container">
+        <h1>Angular 22: A legfontosabb újdonságok</h1>
+        <div class="meta" style="color: #666; margin-top: 10px;">Publikálva: 2026. június 4.</div>
+    </div>
+</section>
+
+<main class="container">
+    <article class="post-content">
+        <p>Az Angular 22 jelentős mérföldkő a keretrendszer életében, mivel több kulcsfontosságú Signal-alapú API is kilépett a kísérleti fázisból. Ebben a bejegyzésben összefoglaljuk a legfontosabb változásokat.</p>
+
+        <h3>1. Az OnPush az új alapértelmezett Change Detection</h3>
+        <p>Az Angular közösség régi vágya teljesült: mostantól az <code>OnPush</code> a default változásdetektálási stratégia. Ez a Signals és a Zone-less Angular térnyerésével vált logikussá, mivel így a keretrendszer csak a ténylegesen érintett komponenseket frissíti, jelentősen javítva a teljesítményt.</p>
+
+        <h3>2. Stabil Resource API (httpResource)</h3>
+        <p>A Signal-ökoszisztéma hiányzó láncszeme, a Resource API végre stabilizálódott. A legfontosabb újdonság a <code>httpResource</code>, amely reaktív módon kezeli a HTTP kéréseket: ha egy benne használt Signal megváltozik, a kérés automatikusan újraindul. Beépített állapotkezelést biztosít (<code>value</code>, <code>error</code>, <code>isLoading</code>), és natívan kezeli a race condition-öket.</p>
+
+        <h3>3. Signal Forms: Készen a produkciós használatra</h3>
+        <p>A Signal-alapú űrlapkezelés is stabillá vált. Főbb jellemzői:</p>
+        <ul>
+            <li><strong>Submission API:</strong> Az űrlap beküldési logikája (pl. aszinkron mentés, validációs hibák kezelése) közvetlenül a <code>form</code> hívásban definiálható.</li>
+            <li><strong>Dinamikus sémák:</strong> A <code>validateStandardSchema</code> segítségével (pl. Zod vagy Valibot használatával) a validációs szabályok reaktívan változhatnak.</li>
+            <li><strong>CSS támogatás:</strong> Automatikus osztálykezelés (pl. <code>.ng-invalid</code>) a Signal-alapú mezőkhöz is.</li>
+        </ul>
+
+        <h3>4. Új @Service dekorátor és injectAsync</h3>
+        <ul>
+            <li><strong><code>@Service()</code>:</strong> Az <code>@Injectable({ providedIn: 'root' })</code> rövidebb, ergonomikusabb alternatívája.</li>
+            <li><strong><code>injectAsync</code>:</strong> Lehetővé teszi a szervizek lusta betöltését (lazy loading) csak akkor, amikor szükség van rájuk. Az <code>onIdle</code> opcióval kombinálva a háttérben is előtölthetők a függőségek.</li>
+        </ul>
+
+        <h3>5. Sablon szintaxis és Router fejlesztések</h3>
+        <ul>
+            <li><strong>Template Spread:</strong> Már a sablonokban is használható az object és array spread (<code>...</code>) operátor.</li>
+            <li><strong>Arrow Functions:</strong> Rövid nyílfüggvények írhatók közvetlenül a sablon kifejezésekbe.</li>
+            <li><strong>Reaktív isActive:</strong> Új Signal-alapú függvény a navigációs útvonalak aktivitásának ellenőrzésére.</li>
+        </ul>
+
+        <h3>6. HttpClient és Fetch API</h3>
+        <p>Az <code>HttpClient</code> mostantól alapértelmezetten a modern <strong>Fetch API</strong>-t használja az XMLHttpRequest (XHR) helyett. Ez jobb streaming támogatást és modernebb alapokat biztosít.</p>
+        
+        <p style="margin-top: 40px; font-style: italic; color: #666;">Forrás: AngularArchitects.io - Angular 22 New Features</p>
+    </article>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 Angular PRSTART Blog | Minden jog fenntartva</p>
+    </div>
+</footer>
+
+</body>
+</html>

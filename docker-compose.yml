@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  web:
+    image: nginx:alpine
+    container_name: angular_blog
+    restart: unless-stopped
+    volumes:
+      - ./:/usr/share/nginx/html:ro
+    labels:
+      - "traefik.enable=true"
+      # Local development
+      - "traefik.http.routers.angular-blog-local.rule=Host(`angular.localhost`)"
+      - "traefik.http.routers.angular-blog-local.entrypoints=websecure"
+      - "traefik.http.routers.angular-blog-local.tls=true"
+      # Production
+      - "traefik.http.routers.angular-blog.rule=Host(`angular.prstart.hu`)"
+      - "traefik.http.routers.angular-blog.entrypoints=websecure"
+      - "traefik.http.routers.angular-blog.tls=true"
+      - "traefik.http.routers.angular-blog.tls.certresolver=myresolver"
+      
+      - "traefik.http.services.angular-blog.loadbalancer.server.port=80"
+    networks:
+      - traefik
+
+networks:
+  traefik:
+    external: true
