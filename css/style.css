@@ -250,7 +250,63 @@ header .logo span {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 30px;
-    margin-bottom: 100px;
+    margin-bottom: 60px;
+}
+
+/* Intro & Promo Styles */
+.intro-section {
+    padding: 60px 0;
+    line-height: 1.8;
+}
+
+.intro-section h2 {
+    color: var(--accent-gold);
+    font-size: 2.2em;
+    margin-bottom: 20px;
+}
+
+.promo-banner {
+    margin: 80px 0;
+    padding: 60px;
+    border-radius: 30px;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(239, 68, 68, 0.1) 100%);
+    border: 2px solid var(--accent-gold);
+    position: relative;
+    overflow: hidden;
+}
+
+.promo-banner h2 {
+    font-size: 2.5em;
+    color: var(--accent-gold);
+    margin-bottom: 15px;
+}
+
+.promo-banner p {
+    font-size: 1.2em;
+    color: var(--text-main);
+    margin-bottom: 30px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-promo {
+    display: inline-block;
+    padding: 16px 40px;
+    background: var(--accent-gold);
+    color: var(--primary-bg);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 1.1em;
+    transition: all 0.3s;
+    box-shadow: 0 10px 20px rgba(251, 191, 36, 0.2);
+}
+
+.btn-promo:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 15px 30px rgba(251, 191, 36, 0.4);
 }
 
 .btn-read {
