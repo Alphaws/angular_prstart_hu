@@ -28,10 +28,8 @@ services:
     container_name: angular_blog_api
     restart: unless-stopped
     environment:
-      - OLLAMA_URL=http://host.docker.internal:11434
+      - OLLAMA_URL=http://ollama:11434
       - MODEL_NAME=angular_assistant
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.angular-blog-api.rule=Host(`angular.prstart.hu`) && PathPrefix(`/api`)"
