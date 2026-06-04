@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js Ökoszisztéma Kalauz: nvm, Node és npm profiknak | Angular PRSTART</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <a href="../index.html" class="logo"><span>A</span>ngular PRSTART</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero" style="padding: 60px 0;">
+    <div class="container">
+        <h1>Node.js Ökoszisztéma Kalauz: nvm, Node és npm profiknak</h1>
+        <div class="meta" style="color: var(--text-muted); margin-top: 10px;">Publikálva: 2026. június 4.</div>
+    </div>
+</section>
+
+<main class="container">
+    <article class="post-content">
+        <p>Az Angular fejlesztés alapköve nem maga a keretrendszer, hanem az a futtatókörnyezet és csomagkezelő rendszer, amin nyugszik. Ez az útmutató segít rendet tenni a verziók és eszközök között.</p>
+
+        <h3>1. Az Alapok: Miért kell nekünk az nvm?</h3>
+        <p>Soha ne telepíts Node.js-t közvetlenül a weboldalról letöltött installerrel! A probléma: Különböző projektjeid különböző Node verziókat igényelhetnek (pl. egy régi v16-os legacy projekt és egy új v22-es Angular projekt). A megoldás: <strong>nvm (Node Version Manager)</strong>. Ez lehetővé teszi, hogy több Node verziót tarts a gépeden és egyetlen paranccsal válts közöttük.</p>
+        
+        <p><strong>Telepítés (Linux/macOS):</strong></p>
+        <pre>curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash</pre>
+        <p><em>(Windowsra az nvm-windows használata javasolt.)</em></p>
+
+        <h3>2. Node.js Kezelés: LTS vs. Current</h3>
+        <p>A Node.js-nél két fő ágat különböztetünk meg:</p>
+        <ul>
+            <li><strong>LTS (Long Term Support):</strong> Stabil, produkciós környezetbe szánt verziók (pl. v20, v22, v24). Angular fejlesztéshez mindig ezt válaszd!</li>
+            <li><strong>Current:</strong> A legfrissebb funkciókat tartalmazza, de kevésbé stabil.</li>
+        </ul>
+
+        <h3>3. npm: A Csomagkezelő Művészete</h3>
+        <p>Az npm (Node Package Manager) nem csak könyvtárak letöltésére való. A profik tudják, hogyan tartsák tisztán a <code>node_modules</code> mappát.</p>
+        
+        <p><strong>Telepítési típusok:</strong></p>
+        <ul>
+            <li><code>npm install &lt;név&gt;</code>: Csak az adott projektben futáshoz kell (pl. RxJS).</li>
+            <li><code>npm install -D &lt;név&gt;</code>: Csak fejlesztéshez kell (pl. TypeScript, ESLint).</li>
+            <li><code>npm install -g &lt;név&gt;</code>: Globális eszközök (pl. @angular/cli).</li>
+        </ul>
+
+        <h3>4. Angular Specifikus Verziókezelés</h3>
+        <p>Az Angular CLI rendkívül érzékeny a Node verzióra. Az Angular 22 például legalább v22.22.3 vagy v24.15.0+ verziót igényel.</p>
+        
+        <p><strong>Pro Tipp: Az .nvmrc fájl</strong></p>
+        <p>Helyezz el egy <code>.nvmrc</code> fájlt a projekt gyökerébe, amibe csak a verziószámot írod (pl. <code>24.16.0</code>). Ezután a projektbe lépve elég egy <code>nvm use</code> parancs, és az nvm automatikusan a megfelelő verzióra vált.</p>
+
+        <h3>5. Frissítési Workflow</h3>
+        <p>Ha új Node verzióra váltasz, ne telepítsd újra manuálisan a globális csomagokat! Használd a következő parancsot:</p>
+        <pre>nvm install 24 --reinstall-packages-from=22</pre>
+
+        <h3>6. Trükkök és Hibaelhárítás</h3>
+        <p><strong>"Tele van a lemezem!"</strong></p>
+        <p>Használd az <code>npkill</code> eszközt a felesleges mappák gyors törléséhez:</p>
+        <pre>npx npkill</pre>
+
+        <p><strong>Hiba van a globális csomagban!</strong></p>
+        <p>Ha az <code>ng</code> parancs furcsa hibákat dob egy frissítés után:</p>
+        <pre>npm cache clean --force
+npm install -g @angular/cli@latest</pre>
+
+        <p style="margin-top: 40px; font-weight: bold; color: var(--accent-gold);">Legyen a kódotok tiszta, a buildetek pedig gyors! 🚀</p>
+    </article>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 Angular PRSTART Blog | Minden jog fenntartva</p>
+    </div>
+</footer>
+
+</body>
+</html>
