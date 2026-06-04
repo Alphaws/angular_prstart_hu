@@ -315,6 +315,118 @@ pre {
     margin: 30px 0;
 }
 
+/* Chat Widget Styles */
+.chat-trigger {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background: var(--angular-red);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 2000;
+    box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
+    transition: all 0.3s;
+    font-size: 1.5em;
+}
+
+.chat-trigger:hover {
+    transform: scale(1.1) rotate(10deg);
+}
+
+.chat-window {
+    position: fixed;
+    bottom: 100px;
+    left: 30px;
+    width: 320px;
+    height: 450px;
+    border-radius: 20px;
+    display: none;
+    flex-direction: column;
+    z-index: 1999;
+    overflow: hidden;
+}
+
+.chat-window.active {
+    display: flex;
+    animation: slideUpChat 0.3s ease-out;
+}
+
+@keyframes slideUpChat {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.chat-header {
+    padding: 15px 20px;
+    background: rgba(239, 68, 68, 0.2);
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message {
+    padding: 10px 15px;
+    border-radius: 12px;
+    max-width: 80%;
+    font-size: 0.9em;
+}
+
+.message.bot {
+    background: var(--secondary-bg);
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+}
+
+.message.user {
+    background: var(--accent-gold);
+    color: var(--primary-bg);
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+}
+
+.chat-input {
+    padding: 15px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    gap: 10px;
+}
+
+.chat-input input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: white;
+    outline: none;
+}
+
+.chat-input button {
+    background: var(--accent-gold);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
 footer {
     background-color: #020617;
     border-top: 1px solid var(--border-color);

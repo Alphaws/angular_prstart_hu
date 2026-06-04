@@ -84,10 +84,65 @@
     <button onclick="toggleCheatSheet()" style="background: none; border: 1px solid var(--accent-gold); color: var(--accent-gold); padding: 5px 10px; border-radius: 5px; cursor: pointer;">Bezárás</button>
 </div>
 
+<!-- Chat Widget -->
+<div class="chat-trigger" onclick="toggleChat()">💬</div>
+<div class="chat-window glass" id="chatWindow">
+    <div class="chat-header">
+        <span>Angular Assistant</span>
+        <button onclick="toggleChat()" style="background:none; border:none; color:white; cursor:pointer;">✕</button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+        <div class="message bot">Szia! Kérdésed van az Angular 22-vel vagy a tananyagokkal kapcsolatban? Szívesen segítek!</div>
+    </div>
+    <div class="chat-input">
+        <input type="text" id="userInput" placeholder="Írj ide..." onkeypress="if(event.key === 'Enter') sendMessage()">
+        <button onclick="sendMessage()">➤</button>
+    </div>
+</div>
+
 <script>
     function toggleCheatSheet() {
         const panel = document.getElementById('cheatSheet');
         panel.classList.toggle('active');
+    }
+
+    function toggleChat() {
+        const chat = document.getElementById('chatWindow');
+        chat.classList.toggle('active');
+    }
+
+    function sendMessage() {
+        const input = document.getElementById('userInput');
+        const text = input.value.trim();
+        if (text === "") return;
+
+        const messages = document.getElementById('chatMessages');
+        
+        // User message
+        const userDiv = document.createElement('div');
+        userDiv.className = 'message user';
+        userDiv.textContent = text;
+        messages.appendChild(userDiv);
+        
+        input.value = "";
+        messages.scrollTop = messages.scrollHeight;
+
+        // Simple Bot logic
+        setTimeout(() => {
+            const botDiv = document.createElement('div');
+            botDiv.className = 'message bot';
+            
+            let response = "Értem. Ez egy remek kérdés! Javaslom nézd meg a legújabb Node.js tananyagunkat a főoldalon.";
+            if (text.toLowerCase().includes("angular")) {
+                response = "Az Angular 22 jelenleg a legstabilabb és leggyorsabb verziónk. Próbáld ki a Signal Forms-ot!";
+            } else if (text.toLowerCase().includes("node")) {
+                response = "Node.js-ből legalább v24.15.0 javasolt az Angular 22-höz.";
+            }
+
+            botDiv.textContent = response;
+            messages.appendChild(botDiv);
+            messages.scrollTop = messages.scrollHeight;
+        }, 800);
     }
 </script>
 
