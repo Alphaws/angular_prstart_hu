@@ -26,10 +26,21 @@
     </div>
 </section>
 
+<section class="roadmap-section container">
+    <h2>Angular Tanulási Útvonal</h2>
+    <div class="roadmap-container">
+        <div class="roadmap-step glass">1. Node & CLI</div>
+        <div class="roadmap-step glass">2. Components</div>
+        <div class="roadmap-step glass">3. Signals</div>
+        <div class="roadmap-step glass">4. API & RxJS</div>
+        <div class="roadmap-step glass">5. Deployment</div>
+    </div>
+</section>
+
 <main class="container">
     <div class="post-grid">
         <!-- Node.js ecosystem post -->
-        <article class="post-card">
+        <article class="post-card glass">
             <div class="content">
                 <div class="meta">2026. június 4. • Tananyag</div>
                 <h2>Node.js Ökoszisztéma Kalauz: nvm, Node és npm profiknak</h2>
@@ -39,7 +50,7 @@
         </article>
 
         <!-- First Angular Project post -->
-        <article class="post-card">
+        <article class="post-card glass">
             <div class="content">
                 <div class="meta">2026. június 4. • Útmutató</div>
                 <h2>Az első Angular projekted: Útmutató az induláshoz</h2>
@@ -49,7 +60,7 @@
         </article>
 
         <!-- Angular 22 post -->
-        <article class="post-card">
+        <article class="post-card glass">
             <div class="content">
                 <div class="meta">2026. június 4. • Blog</div>
                 <h2>Angular 22: A legfontosabb újdonságok egy pillantással</h2>
@@ -59,6 +70,26 @@
         </article>
     </div>
 </main>
+
+<!-- Cheat Sheet -->
+<div class="cheat-sheet-trigger" onclick="toggleCheatSheet()">Angular 22 Cheat Sheet</div>
+<div class="cheat-sheet-panel glass" id="cheatSheet">
+    <h3 style="color: var(--accent-gold); margin-top: 0;">Angular 22 Gyorssegéd</h3>
+    <ul style="padding-left: 15px; font-size: 0.9em;">
+        <li><strong>OnPush by default:</strong> `ChangeDetectionStrategy.OnPush` az alapértelmezett.</li>
+        <li><strong>Selectorless:</strong> Komponensek már selector nélkül is használhatóak.</li>
+        <li><strong>@boundary:</strong> Új hibakezelési template API (Preview).</li>
+        <li><strong>Signal Forms:</strong> Stabil verzió, pehelykönnyű reaktivitás.</li>
+    </ul>
+    <button onclick="toggleCheatSheet()" style="background: none; border: 1px solid var(--accent-gold); color: var(--accent-gold); padding: 5px 10px; border-radius: 5px; cursor: pointer;">Bezárás</button>
+</div>
+
+<script>
+    function toggleCheatSheet() {
+        const panel = document.getElementById('cheatSheet');
+        panel.classList.toggle('active');
+    }
+</script>
 
 <footer>
     <div class="container">
