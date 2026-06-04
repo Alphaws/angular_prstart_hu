@@ -146,6 +146,77 @@ users = httpResource&lt;User[]&gt;('/api/users');
 }
 @if (users.isLoading()) { ... }</pre>
         </div>
+
+        <!-- Deferrable Views -->
+        <div class="cheat-box glass">
+            <h3>📦 Deferrable Views <span class="tag">v17+</span></h3>
+            <pre>@defer (on viewport; prefetch on idle) {
+  &lt;app-heavy-chart /&gt;
+} @placeholder {
+  &lt;div&gt;Töltés...&lt;/div&gt;
+} @loading (after 100ms; minimum 500ms) {
+  &lt;app-spinner /&gt;
+} @error {
+  &lt;p&gt;Hiba történt&lt;/p&gt;
+}</pre>
+        </div>
+
+        <!-- Routing -->
+        <div class="cheat-box glass">
+            <h3>🗺️ Routing (Modern)</h3>
+            <pre>export const routes: Routes = [{
+  path: 'user/:id',
+  component: UserComponent,
+  // Functional Guard
+  canActivate: [() => inject(Auth).isLoggedIn()],
+  // Functional Resolver
+  resolve: { 
+    data: (route) => inject(Service).get(route.params['id']) 
+  }
+}];</pre>
+        </div>
+
+        <!-- Lifecycle Hooks -->
+        <div class="cheat-box glass">
+            <h3>🔄 Lifecycle Hooks (New)</h3>
+            <pre>constructor() {
+  // Lefut minden renderelés után
+  afterRender(() => {
+    console.log('DOM frissült');
+  });
+
+  // Csak a legközelebbi renderelés után
+  afterNextRender(() => {
+    this.focusInput();
+  });
+}</pre>
+        </div>
+
+        <!-- Signal Forms -->
+        <div class="cheat-box glass">
+            <h3>📝 Signal Forms <span class="tag">v22+</span></h3>
+            <pre>// Pehelykönnyű reaktív űrlapok
+userForm = signalForm({
+  name: signal(''),
+  email: signal('', [Validators.required])
+});
+
+// Használat
+@if (userForm.valid()) { ... }
+&lt;input [formControl]="userForm.name"&gt;</pre>
+        </div>
+
+        <!-- Performance -->
+        <div class="cheat-box glass">
+            <h3>🚀 Performance & Zoneless</h3>
+            <pre>// bootstrapApplication (main.ts)
+bootstrapApplication(App, {
+  providers: [
+    // Zone.js kikapcsolása
+    provideExperimentalZonelessChangeDetection()
+  ]
+});</pre>
+        </div>
     </div>
 
     <div style="text-align: center; margin: 60px 0;">
