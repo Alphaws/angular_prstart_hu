@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API hívások és RxJS: A reaktív adatáramlás | Angular PRSTART</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <a href="../index.html" class="logo"><span>A</span>ngular PRSTART</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero" style="padding: 60px 0;">
+    <div class="container">
+        <h1>API hívások és RxJS: A reaktív adatáramlás</h1>
+        <div class="meta" style="color: var(--text-muted); margin-top: 10px;">Publikálva: 2026. június 5.</div>
+    </div>
+</section>
+
+<main class="container">
+    <article class="post-content">
+        <p>A modern webalkalmazások szíve az adatok lekérése a szerverről. Az Angular ehhez a <code>HttpClient</code> modult és az <strong>RxJS</strong> könyvtárat használja, ami az aszinkron adatáramlás mestere.</p>
+
+        <h3>1. HttpClient: A kapocs a szerverhez</h3>
+        <p>Az Angular <code>HttpClient</code> eszköze <strong>Observable</strong> objektumokat ad vissza. Ez azt jelenti, hogy feliratkozhatunk az adatokra, és kezelhetjük a hibákat vagy az átalakításokat.</p>
+        <pre>this.http.get&lt;User[]&gt;('/api/users').subscribe(users => {
+  this.users = users;
+});</pre>
+
+        <h3>2. Miért RxJS?</h3>
+        <p>Az RxJS operátorok (mint a <code>map</code>, <code>filter</code>, <code>switchMap</code>) lehetővé teszik, hogy komplex adatfolyamokat kezeljünk egyszerűen. Például egy keresőnél elkerülhetjük a felesleges API hívásokat a <code>debounceTime</code> operátorral.</p>
+
+        <h3>3. Újdonság: httpResource (v22+)</h3>
+        <p>Az Angular 22 bevezette a <strong>httpResource</strong>-t, ami ötvözi az API hívásokat a Signalokkal. Nincs többé szükség kézi feliratkozásra (`subscribe`), az adat automatikusan Signal lesz!</p>
+        <pre>users = httpResource&lt;User[]&gt;('/api/users');
+// A template-ben: users.value()</pre>
+
+        <p style="margin-top: 40px; font-weight: bold; color: var(--accent-gold);">Már majdnem a végére értél az útvonalnak! A következő lépés az alkalmazásod élesítése a nagyvilágnak. 🚀</p>
+    </article>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 Angular PRSTART Blog | Minden jog fenntartva</p>
+    </div>
+</footer>
+
+</body>
+</html>

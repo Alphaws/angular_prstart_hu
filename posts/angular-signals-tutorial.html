@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular Signals: Viszlát Zone.js, Szia Teljesítmény! | Angular PRSTART</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <a href="../index.html" class="logo"><span>A</span>ngular PRSTART</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero" style="padding: 60px 0;">
+    <div class="container">
+        <h1>Angular Signals: Viszlát Zone.js, Szia Teljesítmény!</h1>
+        <div class="meta" style="color: var(--text-muted); margin-top: 10px;">Publikálva: 2026. június 5.</div>
+    </div>
+</section>
+
+<main class="container">
+    <article class="post-content">
+        <p>Az Angular Signals a legizgalmasabb változás a keretrendszer történetében. Ez egy új reaktív modell, amely lehetővé teszi, hogy az Angular pontosan tudja, melyik adat változott, és csak a template legszükségesebb részét frissítse.</p>
+
+        <h3>1. Mi az a Signal?</h3>
+        <p>A Signal egy olyan érték, ami "értesítést" tud küldeni, ha megváltozik. Gondolj rá úgy, mint egy intelligens változóra.</p>
+        <pre>const count = signal(0); // Létrehozás
+console.log(count());   // Olvasás (függvényként hívjuk!)
+count.set(5);           // Új érték beállítása
+count.update(v => v + 1); // Frissítés az előző érték alapján</pre>
+
+        <h3>2. Computed Signals és Effects</h3>
+        <p>A Signalok ereje a kombinálhatóságban rejlik:</p>
+        <ul>
+            <li><strong>computed():</strong> Olyan érték, ami automatikusan frissül, ha a benne használt Signalok változnak.</li>
+            <li><strong>effect():</strong> Egy kódblokk, ami lefuttatódik minden alkalommal, amikor a figyelt Signal változik (pl. naplózás vagy mentés).</li>
+        </ul>
+
+        <h3>3. Miért váltunk Signalokra?</h3>
+        <p>A régi Angular a <strong>Zone.js</strong> könyvtárra támaszkodott, ami minden egyes kattintásnál vagy időzítőnél átvizsgálta a teljes alkalmazást változások után kutatva. Ez nagy appoknál lassú volt. A Signalokkal az Angular **pontosan tudja**, hol kell frissíteni, így az alkalmazásod villámgyors lesz.</p>
+
+        <p style="margin-top: 40px; font-weight: bold; color: var(--accent-gold);">Pro Tipp: Az Angular 22-ben a Signal Forms és a httpResource aszinkron Signalok már stabilak és használatra készek! 🚀</p>
+    </article>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 Angular PRSTART Blog | Minden jog fenntartva</p>
+    </div>
+</footer>
+
+</body>
+</html>

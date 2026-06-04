@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular Komponensek: A Standalone Éra | Angular PRSTART</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <a href="../index.html" class="logo"><span>A</span>ngular PRSTART</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero" style="padding: 60px 0;">
+    <div class="container">
+        <h1>Angular Komponensek: A Standalone Éra</h1>
+        <div class="meta" style="color: var(--text-muted); margin-top: 10px;">Publikálva: 2026. június 5.</div>
+    </div>
+</section>
+
+<main class="container">
+    <article class="post-content">
+        <p>A modern Angular (v17+) egyik legnagyobb újítása a <strong>Standalone Components</strong> bevezetése volt. Felejtsd el a bonyolult <code>NgModule</code> fájlokat! Mostantól minden komponens egy önálló egység, ami egyszerűbbé és érthetőbbé teszi a kódodat.</p>
+
+        <h3>1. Mi az a Standalone Komponens?</h3>
+        <p>Egy olyan komponens, amely saját maga deklarálja a függőségeit (importjait). Nincs szükség arra, hogy egy modulba regisztráld. Így néz ki a definíciója:</p>
+        <pre>@Component({
+  selector: 'app-user-profile',
+  standalone: true, // Ez a kulcs!
+  imports: [CommonModule, MyButtonComponent],
+  template: `&lt;h1&gt;Szia, {{ name }}!&lt;/h1&gt;`,
+})
+export class UserProfileComponent {
+  name = 'Fejlesztő';
+}</pre>
+
+        <h3>2. Miért jó ez neked?</h3>
+        <ul>
+            <li><strong>Kevesebb "Boilerplate":</strong> Nincs többé szükség a végtelen <code>app.module.ts</code> listákra.</li>
+            <li><strong>Jobb Tree Shaking:</strong> Az Angular csak azt a kódot fordítja be a kész alkalmazásba, amit ténylegesen importálsz.</li>
+            <li><strong>Könnyebb tesztelés:</strong> A komponensek elszigeteltek, így a unit tesztek gyorsabbak és egyszerűbbek.</li>
+        </ul>
+
+        <h3>3. Input és Output: Adatáramlás</h3>
+        <p>A komponensek közötti kommunikáció alapja az <code>@Input()</code> (adat fogadása) és az <code>@Output()</code> (esemény küldése). Az Angular 22-ben már használhatod a legújabb <strong>signal-based inputs</strong> formátumot is!</p>
+
+        <p style="margin-top: 40px; font-weight: bold; color: var(--accent-gold);">Következő lépés: Ismerd meg a Signalokat, az Angular új reaktív motorját! 🚀</p>
+    </article>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 Angular PRSTART Blog | Minden jog fenntartva</p>
+    </div>
+</footer>
+
+</body>
+</html>
