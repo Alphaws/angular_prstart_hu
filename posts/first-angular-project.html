@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Az első Angular projekted: Útmutató az induláshoz | Angular PRSTART</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <a href="../index.html" class="logo"><span>A</span>ngular PRSTART</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero" style="padding: 60px 0;">
+    <div class="container">
+        <h1>Az első Angular projekted: Útmutató az induláshoz</h1>
+        <div class="meta" style="color: var(--text-muted); margin-top: 10px;">Publikálva: 2026. június 4.</div>
+    </div>
+</section>
+
+<main class="container">
+    <article class="post-content">
+        <p>Elhatároztad, hogy megtanulod a modern webfejlesztés egyik legnépszerűbb keretrendszerét? Kiváló döntés! Az Angular stabil, jól strukturált és minden eszközt megad a professzionális alkalmazások építéséhez. Ebben az útmutatóban lépésről lépésre végigvesszük, hogyan hozhatod létre az első projektedet.</p>
+
+        <h3>1. Előfeltételek: Mi kell a gépedre?</h3>
+        <p>Mielőtt belefognánk, két alapvető dologra lesz szükséged:</p>
+        <ul>
+            <li><strong>Node.js:</strong> Ez a futtatókörnyezet. Javasoljuk az <em>LTS (Long Term Support)</em> verzió használatát.</li>
+            <li><strong>npm vagy yarn:</strong> A csomagkezelő, amivel a könyvtárakat telepítjük (a Node.js-sel együtt érkezik).</li>
+        </ul>
+        <p>Ellenőrizd a verziókat a terminálban:</p>
+        <pre>node -v
+npm -v</pre>
+
+        <h3>2. Az Angular CLI telepítése</h3>
+        <p>Az <strong>Angular CLI</strong> (Command Line Interface) a legjobb barátod lesz. Ez az eszköz generálja a kódot, futtatja a fejlesztői szervert és építi fel a kész alkalmazást. Telepítsük globálisan:</p>
+        <pre>npm install -g @angular/cli</pre>
+
+        <h3>3. A projekt létrehozása</h3>
+        <p>Navigálj abba a mappába, ahol a projektjeidet tartod, majd add ki a következő parancsot:</p>
+        <pre>ng new elso-projektem</pre>
+        <p>A CLI fel fog tenni néhány kérdést:</p>
+        <ul>
+            <li><strong>Which stylesheet format would you like to use?</strong> Válaszd a <code>CSS</code>-t vagy az <code>SCSS</code>-t (ha szereted a változókat és a beágyazott stílusokat).</li>
+            <li><strong>Do you want to enable Server-Side Rendering (SSR)?</strong> Kezdőként válaszd a <code>No</code>-t, később bármikor hozzáadhatod.</li>
+        </ul>
+
+        <h3>4. A fejlesztői szerver indítása</h3>
+        <p>Lépj be a mappába és indítsd el a szervert:</p>
+        <pre>cd elso-projektem
+ng serve --open</pre>
+        <p>Az <code>--open</code> kapcsoló automatikusan megnyitja a böngészőt a <code>http://localhost:4200</code> címen.</p>
+
+        <h3>5. Trükkök és Technikák a hatékony kezdéshez</h3>
+        
+        <p><strong>A Standalone komponensek ereje:</strong></p>
+        <p>A modern Angularban (v17+) már nincsenek kötelezően <code>NgModules</code> fájlok. Minden komponens <em>standalone</em>, ami tisztább és érthetőbb kódot eredményez. Komponens generálása:</p>
+        <pre>ng generate component components/my-header</pre>
+
+        <p><strong>Szigorú típusosság:</strong></p>
+        <p>Ne kapcsold ki a TypeScript <code>strict</code> módját! Bár eleinte nehezebbnek tűnhet, rengeteg hibától ment meg a fejlesztés során.</p>
+
+        <p><strong>Vizuális segítség:</strong></p>
+        <p>Használd a <strong>VS Code</strong> szerkesztőt és telepítsd az <em>Angular Language Service</em> kiegészítőt. Ez intelligens kódkiegészítést ad a HTML sablonokban is.</p>
+
+        <h3>6. Összegzés</h3>
+        <p>Az Angular egy komplex, de rendkívül logikus rendszer. Ne ijedj meg a sok fájltól a generált projektben – a legtöbbhöz eleinte nem is kell nyúlnod. A legfontosabb kódjaid az <code>src/app</code> mappában lesznek.</p>
+        
+        <p style="margin-top: 40px; font-weight: bold; color: var(--accent-gold);">Sok sikert az első Angular alkalmazásodhoz! 🚀</p>
+    </article>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 Angular PRSTART Blog | Minden jog fenntartva</p>
+    </div>
+</footer>
+
+</body>
+</html>
