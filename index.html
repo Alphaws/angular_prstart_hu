@@ -111,7 +111,7 @@
         chat.classList.toggle('active');
     }
 
-    function sendMessage() {
+    async function sendMessage() {
         const input = document.getElementById('userInput');
         const text = input.value.trim();
         if (text === "") return;
@@ -127,22 +127,29 @@
         input.value = "";
         messages.scrollTop = messages.scrollHeight;
 
-        // Simple Bot logic
-        setTimeout(() => {
-            const botDiv = document.createElement('div');
-            botDiv.className = 'message bot';
-            
-            let response = "Értem. Ez egy remek kérdés! Javaslom nézd meg a legújabb Node.js tananyagunkat a főoldalon.";
-            if (text.toLowerCase().includes("angular")) {
-                response = "Az Angular 22 jelenleg a legstabilabb és leggyorsabb verziónk. Próbáld ki a Signal Forms-ot!";
-            } else if (text.toLowerCase().includes("node")) {
-                response = "Node.js-ből legalább v24.15.0 javasolt az Angular 22-höz.";
-            }
+        // Show typing indicator
+        const botDiv = document.createElement('div');
+        botDiv.className = 'message bot';
+        botDiv.textContent = "...";
+        messages.appendChild(botDiv);
+        messages.scrollTop = messages.scrollHeight;
 
-            botDiv.textContent = response;
-            messages.appendChild(botDiv);
-            messages.scrollTop = messages.scrollHeight;
-        }, 800);
+        try {
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: text })
+            });
+
+            if (!response.ok) throw new Error('API hiba');
+            
+            const data = await response.json();
+            botDiv.textContent = data.response;
+        } catch (error) {
+            botDiv.textContent = "Sajnálom, az AI asszisztens jelenleg nem elérhető. Kérlek próbáld újra később!";
+            console.error('Chat error:', error);
+        }
+        messages.scrollTop = messages.scrollHeight;
     }
 </script>
 

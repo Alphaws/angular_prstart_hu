@@ -23,6 +23,25 @@ services:
     networks:
       - traefik
 
+  api:
+    build: ./api
+    container_name: angular_blog_api
+    restart: unless-stopped
+    environment:
+      - OLLAMA_URL=http://host.docker.internal:11434
+      - MODEL_NAME=angular_assistant
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.angular-blog-api.rule=Host(`angular.prstart.hu`) && PathPrefix(`/api`)"
+      - "traefik.http.routers.angular-blog-api.entrypoints=websecure"
+      - "traefik.http.routers.angular-blog-api.tls=true"
+      - "traefik.http.routers.angular-blog-api.tls.certresolver=myresolver"
+      - "traefik.http.services.angular-blog-api.loadbalancer.server.port=3000"
+    networks:
+      - traefik
+
 networks:
   traefik:
     external: true
