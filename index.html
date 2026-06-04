@@ -86,14 +86,18 @@
 <!-- Cheat Sheet -->
 <div class="cheat-sheet-trigger" onclick="toggleCheatSheet()">Angular 22 Cheat Sheet</div>
 <div class="cheat-sheet-panel glass" id="cheatSheet">
-    <h3 style="color: var(--accent-gold); margin-top: 0;">Angular 22 Gyorssegéd</h3>
-    <ul style="padding-left: 15px; font-size: 0.9em;">
-        <li><strong>OnPush by default:</strong> `ChangeDetectionStrategy.OnPush` az alapértelmezett.</li>
-        <li><strong>Selectorless:</strong> Komponensek már selector nélkül is használhatóak.</li>
-        <li><strong>@boundary:</strong> Új hibakezelési template API (Preview).</li>
-        <li><strong>Signal Forms:</strong> Stabil verzió, pehelykönnyű reaktivitás.</li>
+    <h3 style="color: var(--accent-gold); margin-top: 0;">Angular Quick Guide</h3>
+    <ul style="padding-left: 15px; font-size: 0.9em; margin-bottom: 20px;">
+        <li><strong>OnPush by default:</strong> Nagyobb teljesítmény alapból.</li>
+        <li><strong>Signal-based:</strong> Új reaktív motor (`signal`, `computed`).</li>
+        <li><strong>Standalone:</strong> Nincs többé szükség modulokra.</li>
+        <li><strong>@for, @if:</strong> Új, gyorsabb template szintaxis.</li>
+        <li><strong>httpResource:</strong> Aszinkron adatok signal-ként.</li>
     </ul>
-    <button onclick="toggleCheatSheet()" style="background: none; border: 1px solid var(--accent-gold); color: var(--accent-gold); padding: 5px 10px; border-radius: 5px; cursor: pointer;">Bezárás</button>
+    <div style="display: flex; gap: 10px;">
+        <a href="posts/angular-cheat-sheet.html" class="btn-read" style="padding: 5px 10px; font-size: 0.8em;">Teljes Cheat Sheet</a>
+        <button onclick="toggleCheatSheet()" style="background: none; border: 1px solid var(--text-muted); color: var(--text-muted); padding: 5px 10px; border-radius: 8px; cursor: pointer; font-size: 0.8em;">Bezárás</button>
+    </div>
 </div>
 
 <!-- Chat Widget -->

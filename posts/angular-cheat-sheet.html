@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular Ultimate Cheat Sheet (v22+) | Angular PRSTART</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .cheat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .cheat-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 15px;
+        }
+        .cheat-box h3 {
+            margin-top: 0;
+            color: var(--accent-gold);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            font-size: 1.4em;
+        }
+        .cheat-box h4 {
+            color: var(--accent-blue);
+            margin: 15px 0 5px 0;
+        }
+        pre {
+            padding: 15px;
+            font-size: 0.85em;
+        }
+        .tag {
+            background: var(--angular-red);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.7em;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <a href="../index.html" class="logo"><span>A</span>ngular PRSTART</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero" style="padding: 60px 0;">
+    <div class="container">
+        <h1>Angular Ultimate Cheat Sheet <span class="tag">v22+</span></h1>
+        <p>A legfontosabb parancsok, szintaxisok és funkciók egyetlen oldalon.</p>
+    </div>
+</section>
+
+<main class="container">
+    <div class="cheat-grid">
+        <!-- CLI -->
+        <div class="cheat-box glass">
+            <h3>🚀 Angular CLI</h3>
+            <pre>ng new my-app          # Új projekt
+ng serve               # Fejlesztői szerver
+ng generate c path     # Komponens generálás
+ng build               # Production build
+ng test                # Unit tesztek futtatása
+ng update              # Verziófrissítés</pre>
+        </div>
+
+        <!-- Standalone Components -->
+        <div class="cheat-box glass">
+            <h3>🧩 Komponensek (Standalone)</h3>
+            <pre>@Component({
+  selector: 'app-ui',
+  standalone: true,
+  imports: [CommonModule, ButtonComponent],
+  template: `...`
+})
+export class UiComponent {
+  // Dependency Injection (Modern)
+  private api = inject(ApiService);
+}</pre>
+        </div>
+
+        <!-- Control Flow -->
+        <div class="cheat-box glass">
+            <h3>🔄 Új Control Flow <span class="tag">v17+</span></h3>
+            <h4>Kondicionálisok</h4>
+            <pre>@if (loggedIn) { ... } 
+@else if (pending) { ... } 
+@else { ... }</pre>
+            <h4>Ciklusok</h4>
+            <pre>@for (item of items; track item.id) {
+  &lt;li&gt;{{ item.name }}&lt;/li&gt;
+} @empty {
+  &lt;p&gt;Nincs adat&lt;/p&gt;
+}</pre>
+        </div>
+
+        <!-- Signals -->
+        <div class="cheat-box glass">
+            <h3>⚡ Signals (Reaktivitás)</h3>
+            <pre>const count = signal(0);
+count();               // Olvasás
+count.set(10);         // Beállítás
+count.update(v => v+1); // Frissítés
+
+const double = computed(() => count() * 2);
+
+effect(() => {
+  console.log('Változott:', count());
+});</pre>
+        </div>
+
+        <!-- Inputs/Outputs -->
+        <div class="cheat-box glass">
+            <h3>📡 Adatáramlás (Signal Based)</h3>
+            <pre>// Input (v17.1+)
+name = input&lt;string&gt;();
+requiredName = input.required&lt;string&gt;();
+
+// Output
+changed = output&lt;number&gt;();
+this.changed.emit(5);
+
+// Model (Two-way)
+count = model(0);</pre>
+        </div>
+
+        <!-- API / HTTP -->
+        <div class="cheat-box glass">
+            <h3>🌐 API & HTTP</h3>
+            <pre>// Új httpResource (v22+)
+users = httpResource&lt;User[]&gt;('/api/users');
+
+// Template használat
+@if (users.value()) {
+  {{ users.value() | json }}
+}
+@if (users.isLoading()) { ... }</pre>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin: 60px 0;">
+        <a href="https://prstart.hu" class="btn-promo">Még több profi trükk a prstart.hu-n!</a>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 Angular PRSTART Blog | Minden jog fenntartva</p>
+    </div>
+</footer>
+
+</body>
+</html>
